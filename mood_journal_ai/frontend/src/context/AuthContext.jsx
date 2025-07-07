@@ -1,8 +1,7 @@
-import { createContext, useState } from "react";
+// only component
+import { useState } from "react";
+import { AuthContext } from "./AuthContextInstance"; // separate context export
 
-export const AuthContext = createContext();
-
-// This context provides authentication state and methods for login and logout
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
 
