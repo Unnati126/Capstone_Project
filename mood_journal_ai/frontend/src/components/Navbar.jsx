@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext.jsx";
+import { AuthContext } from "../context/AuthContextInstance";
 
 export default function Navbar() {
-    const { token, logout } =useContext(AuthContext);
+    const { token, logout } = useContext(AuthContext);
     return (
     <nav>
         <Link to ="/">Home</Link>  |
