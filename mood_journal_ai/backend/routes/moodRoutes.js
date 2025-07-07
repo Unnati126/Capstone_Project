@@ -1,16 +1,18 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
 
 // Importing the mood controller functions
-const {
-    addMood,
-    getMoods
-} = require('../controllers/moodController');
-const auth = require('../middleware/authMiddleware');
+import {
+  addMood,
+  getMoods,
+  deleteMood,
+} from '../controllers/moodController.js';
+
+const router = express.Router();
 
 // Define the routes for mood journal
-router.post('/', auth, addMood);
-router.get('/', auth, getMoods);
+router.post('/', addMood);
+router.get('/', getMoods);
+router.delete('/:id', deleteMood);
 
 // Export the router to be used in the main server file
-module.exports = router;
+export default router;

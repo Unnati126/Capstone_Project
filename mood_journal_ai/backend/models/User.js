@@ -1,11 +1,12 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 // Define the User schema which defines the structure of the User document in MongoDB
-const UserSchema = new mongoose.Schema({
-    name: String,
-    email: { type: String, unique: true},
-    password: String,
+const userSchema = new mongoose.Schema({
+  name: { type: String, required: true, trim: true },
+  email: { type: String, required: true, unique: true, lowercase: true },
+  password: { type: String, required: true },
 });
 
 // Create a User model based on the schema
-module.exports = mongoose.model('User', UserSchema);
+const User = mongoose.model('User', userSchema);
+export default User;
