@@ -1,4 +1,4 @@
-import MoodForm from "../components/MoodForm";
+import MoodForm from "../components/MoodForm.jsx";
 
 export default function Journal() {
     return (

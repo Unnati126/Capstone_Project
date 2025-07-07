@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../api";
-import MoodChart from "../components/MoodChart";
+import MoodChart from "../components/MoodChart.jsx";
 
 export default function Dashboard() {
   const [moods, setMoods] = useState([]);
