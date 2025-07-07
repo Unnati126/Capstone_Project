@@ -5,29 +5,29 @@ import User from '../models/User.js';
 
 const router = express.Router();
 
-// Register a new user
+// ✅ Register a new user
 router.post('/register', async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, age, gender } = req.body;
 
   try {
-    // check if user already exists
+    // Check if user already exists
     const existing = await User.findOne({ email });
     if (existing) return res.status(400).json({ msg: 'User already exists' });
 
-    // hash password
+    // Hash password
     const hashed = await bcrypt.hash(password, 10);
 
-    //create and save new user 
+    // Create and save new user with age & gender
     const newUser = new User({
       name,
       email,
-      password: hashed,
       age,
       gender,
+      password: hashed
     });
     await newUser.save();
 
-    //generate jwt
+    // Generate JWT
     const token = jwt.sign(
       { user: { id: newUser._id } },
       process.env.JWT_SECRET,
@@ -41,7 +41,7 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Login an existing user
+// ✅ Login existing user
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
