@@ -11,6 +11,8 @@ export default function Register() {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    age: "",
+    gender: "",
     password: ""
   });
 
@@ -52,6 +54,24 @@ export default function Register() {
           onChange={handleChange}
           required
         />
+        <input 
+          name="age"
+          type="number"
+          placeholder="Age"
+          value={form.age}
+          onChange={handleChange}
+          required
+        />
+        <select
+          name="gender"
+          value={form.gender}
+          onChange={handleChange}
+        required>
+          <option value="">Select Gender</option>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+          <option value="other">Other</option>
+        </select>
         <input
           name="password"
           type="password"
