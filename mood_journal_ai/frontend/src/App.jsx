@@ -12,6 +12,7 @@ import Tips from "./pages/Tips.jsx";
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<><Home /><Navbar /></>} />
         <Route path="/login" element={<><Home /><Navbar /><Login /></>} />
