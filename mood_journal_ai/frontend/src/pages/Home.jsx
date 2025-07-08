@@ -8,14 +8,19 @@ export default function Home() {
 
   return (
     <div className="home-container">
+      <div className="overlay" />
 
-      <div className="auth-toggle-buttons">
-        <button onClick={() => setActiveForm("login")}>Login</button>
-        <button onClick={() => setActiveForm("register")}>Register</button>
+      <div className="auth-section">
+        <div className="auth-toggle-buttons">
+          <button onClick={() => setActiveForm("login")}>Login</button>
+          <button onClick={() => setActiveForm("register")}>Register</button>
+        </div>
+
+        <div className="form-box">
+          {activeForm === "login" && <Login />}
+          {activeForm === "register" && <Register />}
+        </div>
       </div>
-
-      {activeForm === "login" && <Login />}
-      {activeForm === "register" && <Register />}
     </div>
   );
 }
