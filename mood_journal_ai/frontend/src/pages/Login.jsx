@@ -28,7 +28,26 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container">
+     <form className="auth-form" onSubmit={handleSubmit}>
+      <input
+        name="email"
+        type="email"
+        placeholder="Email"
+        value={form.email}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="password"
+        type="password"
+        placeholder="Password"
+        value={form.password}
+        onChange={handleChange}
+        required
+      />
+      <button type="submit">Login</button>
+    </form>
+    /*<div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <h2>Login</h2>
         <input
@@ -49,6 +68,6 @@ export default function Login() {
         />
         <button type="submit">Login</button>
       </form>
-    </div>
+    </div>*/
   );
 }
