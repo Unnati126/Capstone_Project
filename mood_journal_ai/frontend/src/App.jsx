@@ -26,5 +26,5 @@ function App() {
 }
 
 
-// entry point for the React application
+// entry point for the React application 
 export default App;
