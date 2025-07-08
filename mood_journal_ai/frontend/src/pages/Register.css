@@ -1,10 +1,9 @@
 .register-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding-top: 60px; 
-  background: #f4f4f4;
+  align-items: flex-start; /* aligns near top */
+  margin-top: 20px;
+  width: 100%;
 }
 
 .register-form {
@@ -16,6 +15,7 @@
   width: 100%;
   text-align: center;
 }
+
 
 .register-form input,
 .register-form select {

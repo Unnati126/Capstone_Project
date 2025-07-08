@@ -1,10 +1,28 @@
-.login-container {
+/*.login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding-top: 60px; /* to avoid overlap with fixed navbar */
+  padding-top: 60px; 
   background: #f4f4f4;
+}
+
+.login-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}*/
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* aligns near top */
+  margin-top: 20px;
+  width: 100%;
 }
 
 .login-form {
@@ -17,15 +35,16 @@
   text-align: center;
 }
 
-.register-form input,
-.register-form select {
+
+.login-form input,
+.login-form select {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
   font-size: 1rem;
 }
 
-.register-form button {
+.login-form button {
   width: 100%;
   padding: 12px;
   margin-top: 10px;
@@ -37,6 +56,6 @@
   cursor: pointer;
 }
 
-.register-form button:hover {
+.login-form button:hover {
   background-color: #4cb9da;
 }
