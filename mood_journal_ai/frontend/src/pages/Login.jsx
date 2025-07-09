@@ -45,29 +45,9 @@ export default function Login() {
         onChange={handleChange}
         required
       />
+      <br />
+      <br />
       <button type="submit">Login</button>
     </form>
-    /*<div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
-    </div>*/
   );
 }

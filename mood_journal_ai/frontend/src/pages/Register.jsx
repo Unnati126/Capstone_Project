@@ -22,7 +22,6 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //console.log("Registering:", form);
     try {
       const res = await API.post("/auth/register", form);
       const token = res.data.token;
@@ -36,9 +35,6 @@ export default function Register() {
   };
 
   return (
-    /*<div className="register-container">
-      <form className="register-form" onSubmit={handleSubmit}>
-        <h2>Create Account</h2>*/
          <form className="auth-form" onSubmit={handleSubmit}>
         <input
           name="name"
@@ -81,8 +77,9 @@ export default function Register() {
           onChange={handleChange}
           required
         />
+        <br />
+        <br />
         <button type="submit">Register</button>
       </form>
-    //</div>
   );
 }
