@@ -20,7 +20,7 @@ export default function Home() {
         </div>
 
         <div className="home-subtext">
-            Track your mood. Understand yourself. Grow.
+            Track your mood. <br /> Understand yourself. Grow.
         </div>
     </div>
     </div>
