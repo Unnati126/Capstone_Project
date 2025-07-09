@@ -55,3 +55,18 @@ body, html {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-subtext {
+  margin-top: 50px;
+  color: #243135;
+  font-size: 1.2rem;
+  font-style: normal;
+  text-align: center;
+}

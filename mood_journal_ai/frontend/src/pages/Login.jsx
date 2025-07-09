@@ -18,9 +18,10 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await API.post("/auth/login", form);
-      login(res.data.token);
+      const token = res.data.token;
+      login(token); 
       alert("Login successful!");
-      navigate("/dashboard");
+      navigate("/journal"); 
     } catch (err) {
       console.error("Login failed:", err.response?.data || err.message);
       alert("Login failed. Please try again.");

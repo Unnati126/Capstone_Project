@@ -6,8 +6,8 @@ export default function Home() {
 
   return (
     <div className="home-page">
+     <div className="home-content">
       <div className="form-wrapper">
-
         <div className="login-box">
             <h2>Login</h2>
             <Login />
@@ -18,6 +18,11 @@ export default function Home() {
             <Register />
           </div>
         </div>
+
+        <div className="home-subtext">
+            Track your mood. Understand yourself. Grow.
+        </div>
+    </div>
     </div>
   );
 }

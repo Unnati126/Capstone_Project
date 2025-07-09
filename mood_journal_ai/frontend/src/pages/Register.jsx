@@ -27,7 +27,7 @@ export default function Register() {
       const token = res.data.token;
       login(token); 
       alert("Registration successful!");
-      navigate("/dashboard"); 
+      navigate("/journal"); 
         } catch (err) {
       console.error("Registration failed:", err.response?.data || err.message);
       alert("Registration failed. Please try again.");
