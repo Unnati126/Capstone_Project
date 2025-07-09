@@ -1,5 +1,6 @@
 import { useState } from "react";
 import API from "../api";
+import "./MoodForm.css";
 
 export default function MoodForm({ onSuccess }) {
   const [moodText, setMoodText] = useState("");
@@ -13,6 +14,7 @@ export default function MoodForm({ onSuccess }) {
   };
 
   return (
+    <div className="mood-form">
     <form onSubmit={handleSubmit}>
       <textarea value={moodText} onChange={(e) => setMoodText(e.target.value)} required />
       <select value={moodEmoji} onChange={(e) => setMoodEmoji(e.target.value)}>
@@ -24,5 +26,6 @@ export default function MoodForm({ onSuccess }) {
       </select>
       <button type="submit">Submit</button>
     </form>
+    </div>
   );
 }

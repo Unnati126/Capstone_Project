@@ -1,5 +1,6 @@
 import Login from "./Login.jsx";
 import Register from "./Register.jsx";
+import Footer from "../components/Footer.jsx";
 import "./Home.css";
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
             Track your mood. <br /> Understand yourself. Grow.
         </div>
     </div>
+    <Footer />
     </div>
   );
 }

@@ -1,0 +1,81 @@
+.journal-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #1c1c1c;
+  color: #fff;
+}
+
+.journal-container {
+  flex: 1;
+  width: 100%;
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  color: #333;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.journal-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.rating-question {
+  margin-bottom: 25px;
+}
+
+.rating-question label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.rating-question input[type="range"] {
+  width: 100%;
+  accent-color: #38c0f4;
+}
+
+.note-box {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.note-box label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.note-box textarea {
+  width: 85%;
+  height: 60px;
+  padding: 12px;
+  font-size: 0.95rem;
+  font-family: 'Segoe UI', sans-serif;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #38c0f4;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #2ba8d9;
+}
