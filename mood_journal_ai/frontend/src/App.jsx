@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"; 
 import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
 import Register from "./pages/Register.jsx";
 import Login from "./pages/Login.jsx";
@@ -21,6 +22,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/tips" element={<Tips />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
