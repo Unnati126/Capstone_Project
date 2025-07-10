@@ -1,22 +1,79 @@
-.tips-container {
-  max-width: 600px;
-  margin: 100px auto; 
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.tips-page {
+  height: 100vh;
+  width: 100vw;
+  background: url("../assets/cover-image.jpeg") no-repeat center center/cover;
+  background-size: 100% 200%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  padding: 40px;
+  box-sizing: border-box;
+  color: white;
 }
 
-.tips-container h2 {
+.tips-content {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px 50px;
+  border-radius: 12px;
+  max-width: 600px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.tips-content h2 {
   margin-bottom: 20px;
-  color: #333;
+  font-size: 1.8rem;
+  color: #ffffff;
 }
 
-.tips-container ul {
-  list-style: none;
+.tips-content ul {
+  list-style-type: none;
   padding: 0;
+}
+
+.tips-content li {
+  margin: 12px 0;
   font-size: 1.1rem;
-  line-height: 2rem;
-  color: #555;
+}
+
+.sign-off {
+  margin-top: 30px;
+  max-width: 600px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #473939;
+}
+
+.breathing-guide {
+  margin-top: 20px;
+  text-align: center;
+  color: #473939;
+}
+
+.breath-circle {
+  width: 80px;
+  height: 80px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #61dafb;
+  animation: breathe 5s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 2;
+  }
+}
+
+.breath-text {
+  color: #4e5658;
+  margin-top: 10px;
+  font-style: italic;
 }

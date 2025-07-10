@@ -5,9 +5,11 @@ import connectDB from './config/db.js';
 import moodRoutes from './routes/moodRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 
+// Load environment variables and connect to the database
 dotenv.config();
 connectDB();
 
+// Initialize Express app
 const app = express();
 app.use(cors());
 app.use(express.json());
