@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer.jsx";
 import "./Journal.css";
 
 export default function Journal() {
+  const navigate = useNavigate();
   const [ratings, setRatings] = useState({
     mood: 1,
     stress: 1,
@@ -99,6 +101,14 @@ export default function Journal() {
         </div>
 
         <button className="submit-btn" type="submit">Submit</button>
+
+        <button
+            type="button"
+            className="next-btn"
+            onClick={() => navigate("/dashboard")}
+          >
+            Next
+        </button>
       </form>
 
       <Footer />
