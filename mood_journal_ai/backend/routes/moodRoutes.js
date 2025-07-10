@@ -1,10 +1,11 @@
-import express from "express";
-import { addMood } from "../controllers/moodController.js";
+import { Router } from "express";
+import { addMood, getAllMoods, deleteMood } from "../controllers/moodController.js";
 import { protect } from "../middleware/authMiddleware.js";
 
-// Mood journal routes
-const router = express.Router();
-router.post("/", protect, addMood);
+const router = Router();
 
-// Get all mood entries for the authenticated user
+router.post("/add", protect, addMood);
+router.get("/", protect, getAllMoods);
+router.delete("/:id", protect, deleteMood);
+
 export default router;

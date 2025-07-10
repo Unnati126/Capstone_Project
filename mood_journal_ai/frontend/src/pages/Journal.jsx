@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API from "../api";
 import Footer from "../components/Footer.jsx";
 import "./Journal.css";
+import axios from "axios"; 
 
 export default function Journal() {
   const navigate = useNavigate();
+
   const [ratings, setRatings] = useState({
     mood: 1,
     stress: 1,
@@ -14,17 +17,66 @@ export default function Journal() {
   });
 
   const [note, setNote] = useState("");
+  const [entries, setEntries] = useState([]);
+
+  // Fetch previous mood entries
+  const fetchEntries = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await API.get("/moods", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setEntries(res.data);
+    } catch (err) {
+      console.error("Error fetching moods:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchEntries();
+  }, []);
 
   const handleRatingChange = (e) => {
     setRatings({ ...ratings, [e.target.name]: parseInt(e.target.value) });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const entry = { ...ratings, note };
-    console.log("Submitted Entry:", entry);
-    alert("Your mood check-in has been submitted!");
-  };  
+
+    try {
+      const token = localStorage.getItem("token");
+      /*await API.post("/moods"*/ 
+      await axios.post("http://localhost:5000/api/moods/add", entry, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      alert("Your mood check-in has been submitted!");
+      setNote(""); // Reset form
+      setRatings({
+        mood: 1,
+        stress: 1,
+        energy: 1,
+        motivation: 1,
+        sleep: 1,
+      });
+      fetchEntries(); // Refresh entries
+    } catch (err) {
+      console.error("Error submitting mood:", err);
+      alert("Failed to submit mood entry.");
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const token = localStorage.getItem("token");
+      await API.delete(`/moods/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      fetchEntries();
+    } catch (err) {
+      console.error("Delete failed:", err);
+    }
+  };
 
   return (
     <div className="journal-page">
@@ -100,16 +152,38 @@ export default function Journal() {
           />
         </div>
 
-        <button className="submit-btn" type="submit">Submit</button>
+        <button className="submit-btn" type="submit">
+          Submit
+        </button>
 
         <button
-            type="button"
-            className="next-btn"
-            onClick={() => navigate("/dashboard")}
-          >
-            Next
+          type="button"
+          className="next-btn"
+          onClick={() => navigate("/dashboard")}
+        >
+          Next
         </button>
       </form>
+
+      {/* Entries List */}
+      <div className="entries-section">
+        <h3>Your Previous Entries</h3>
+        {entries.length === 0 ? (
+          <p>No mood entries yet.</p>
+        ) : (
+          entries.map((entry) => (
+            <div key={entry._id} className="entry-card">
+              <p>😌 Mood: {entry.mood}</p>
+              <p>😰 Stress: {entry.stress}</p>
+              <p>⚡ Energy: {entry.energy}</p>
+              <p>🔥 Motivation: {entry.motivation}</p>
+              <p>🛌 Sleep: {entry.sleep}</p>
+              <p>📝 {entry.note}</p>
+              <button onClick={() => handleDelete(entry._id)}>Delete</button>
+            </div>
+          ))
+        )}
+      </div>
 
       <Footer />
     </div>
