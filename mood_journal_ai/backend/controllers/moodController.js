@@ -1,32 +1,54 @@
-import Mood from '../models/Mood.js';
+import Mood from "../models/Mood.js";
 
-// Function to add new mood entry for the authenticated user
-export const addMood = async (req, res) => {
+export const createMood = async (req, res) => {
   try {
-    const mood = await Mood.create(req.body);
-    res.status(201).json(mood);
+    const {
+      mood,
+      stressLevel,
+      energyLevel,
+      motivationLevel,
+      sleepQuality,
+      notes,
+    } = req.body;
+
+    const newMood = await Mood.create({
+      mood,
+      stressLevel,
+      energyLevel,
+      motivationLevel,
+      sleepQuality,
+      notes,
+      user: req.user._id,
+    });
+
+    res.status(201).json(newMood);
   } catch (err) {
-    console.error('Error adding mood:', err);
-    res.status(500).json({ message: 'Failed to add mood' });
+    console.error("Mood save failed:", err.message);
+    res.status(500).json({ message: "Failed to save mood entry" });
   }
 };
 
-// Function update mood entry for authenticated user
-export const getMoods = async (req, res) => {
-  try {
-    const moods = await Mood.find();
-    res.status(200).json(moods);
-  } catch (err) {
-    res.status(500).json({ message: 'Failed to fetch moods' });
-  }
-};
 
-// Function to delete mood entry for the authenticated user
-export const deleteMood = async (req, res) => {
+/*import Mood from "../models/Mood.js";
+
+export const createMoodEntry = async (req, res) => {
   try {
-    await Mood.findByIdAndDelete(req.params.id);
-    res.status(200).json({ message: 'Mood deleted' });
+    const { moodRating, stressLevel, energyLevel, motivationLevel, sleepQuality, reflection } = req.body;
+
+    const newEntry = new Mood({
+      user: req.user.id,
+      moodRating,
+      stressLevel,
+      energyLevel,
+      motivationLevel,
+      sleepQuality,
+      reflection,
+    }); 
+
+    await newEntry.save();
+    res.status(201).json({ message: "Mood entry saved successfully", mood: newEntry });
   } catch (err) {
-    res.status(500).json({ message: 'Failed to delete mood' });
+    console.error("Error saving mood entry:", err);
+    res.status(500).json({ message: "Failed to save mood entry" });
   }
-};
+};*/

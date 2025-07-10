@@ -59,13 +59,17 @@ export default function Register() {
           onChange={handleChange}
           required
         />
-        <input 
+
+        <select
           name="gender"
-          placeholder="Gender"
           value={form.gender}
           onChange={handleChange}
-          required
-        />
+        required>
+          <option value="">Select Gender</option>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+          <option value="other">Other</option>
+        </select>*
         
         <input
           name="password"
@@ -81,14 +85,3 @@ export default function Register() {
       </form>
   );
 }
-
-/*<select
-          name="gender"
-          value={form.gender}
-          onChange={handleChange}
-        required>
-          <option value="">Select Gender</option>
-          <option value="female">Female</option>
-          <option value="male">Male</option>
-          <option value="other">Other</option>
-        </select>*/
