@@ -2,6 +2,7 @@ import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement } from "chart.js";
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 
+// This component renders a line chart to visualize mood data over time.
 export default function MoodChart({ moods }) {
   const data = {
     labels: moods.map(m => new Date(m.createdAt).toLocaleDateString()),

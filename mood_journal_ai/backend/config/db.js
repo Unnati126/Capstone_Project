@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+// Connect to MongoDB using Mongoose
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
@@ -10,4 +11,5 @@ const connectDB = async () => {
   }
 };
 
+// Export the connectDB function to be used in other parts of the application
 export default connectDB;

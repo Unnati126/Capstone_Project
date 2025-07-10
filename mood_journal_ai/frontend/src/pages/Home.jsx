@@ -3,6 +3,7 @@ import Register from "./Register.jsx";
 import Footer from "../components/Footer.jsx";
 import "./Home.css";
 
+// Home component that displays the login and registration forms
 export default function Home() {
 
   return (

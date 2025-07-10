@@ -4,6 +4,7 @@ import API from "../api";
 import { AuthContext } from "../context/AuthContextInstance";
 import "./Login.css";
 
+// Login component that handles user authentication
 export default function Login() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();

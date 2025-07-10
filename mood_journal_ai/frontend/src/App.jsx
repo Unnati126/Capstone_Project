@@ -30,11 +30,3 @@ function App() {
 
 // entry point for the React application 
 export default App;
-
-
-/*<Route path="/" element={<><Home /><Navbar /></>} />
-        <Route path="/login" element={<><Home /><Navbar /><Login /></>} />
-        <Route path="/register" element={<><Home /><Navbar /><Register /></>} />
-        <Route path="/journal" element={<><Home /><Navbar /><Journal /></>} />
-        <Route path="/dashboard" element={<><Home /><Navbar /><Dashboard /></>} />
-        <Route path="/tips" element={<><Home /><Navbar /><Tips /></>} />*/

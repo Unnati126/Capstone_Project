@@ -1,5 +1,6 @@
 import "./Tips.css";
 
+// Tips component that provides useful tips for mental well-being
 export default function Tips() {
   return (
     <div className="tips-page">

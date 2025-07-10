@@ -165,7 +165,6 @@ export default function Journal() {
         </button>
       </form>
 
-      {/* Entries List */}
       <div className="entries-section">
         <h3>Your Previous Entries</h3>
         {entries.length === 0 ? (

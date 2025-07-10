@@ -4,6 +4,7 @@ import API from "../api";
 import { AuthContext } from "../context/AuthContextInstance";
 import "../pages/Register.css";
 
+// Register component that handles user registration
 export default function Register() {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();

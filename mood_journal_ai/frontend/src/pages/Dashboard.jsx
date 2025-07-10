@@ -28,10 +28,5 @@ export default function Dashboard() {
 
       <Footer />
     </div>
-    /*<div>
-      <h2>Your Mood History</h2>
-      <MoodChart moods={moods} />
-      <Footer />
-    </div>*/
   );
 }
