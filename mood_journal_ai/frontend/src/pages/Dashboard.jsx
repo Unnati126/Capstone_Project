@@ -19,6 +19,15 @@ export default function Dashboard() {
       <h2>Your Mood History</h2>
       <MoodChart moods={moods} />
 
+       <button
+          type="button"
+          className="back-btn"
+          onClick={() => navigate("/journal")}
+        >
+          Back
+        </button>
+
+
       <button
         className="next-btn"
         onClick={() => navigate("/tips")}

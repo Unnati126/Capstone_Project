@@ -10,6 +10,7 @@
 
 .journal-container {
   background-color: #f2f2f2;
+  height: 70%;
   padding: 30px 40px;
   border-radius: 10px;
   width: 100%;
@@ -17,6 +18,18 @@
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
   color: black;
 }
+
+/*.journal-container {
+  width: 600px;
+  background: #fff;
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}*/
 
 .rating-question {
   margin-bottom: 20px;
@@ -29,9 +42,10 @@
 }
 
 textarea {
-  width: 100%;
+  width: 70%;
+  height: 70px;
   padding: 10px;
-  margin-top: 8px;
+  margin-top: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
 }
@@ -52,10 +66,11 @@ textarea {
 }
 
 .entries-section {
+  width: 600px;
   margin-top: 40px;
   max-width: 700px;
   margin-inline: auto;
-  text-align: left;
+  text-align: center;
   color: white;
 }
 

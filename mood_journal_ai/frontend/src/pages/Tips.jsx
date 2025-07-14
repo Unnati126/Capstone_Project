@@ -1,7 +1,9 @@
 import "./Tips.css";
+import { useNavigate } from "react-router-dom";
 
 // Tips component that provides useful tips for mental well-being
 export default function Tips() {
+  const navigate = useNavigate();
   return (
     <div className="tips-page">
       <div className="tips-content">
@@ -27,8 +29,19 @@ export default function Tips() {
             Remember: You’re doing better than you think.<br />
             Come back tomorrow and take another step toward a happier you!           
         </p>
+
+        <button
+          type="button"
+          className="back-btn"
+          onClick={() => navigate("/dashboard")}
+        >
+          Back
+        </button>
+
     </div>
   );
 }
+
+
 
  /*🩵*/
