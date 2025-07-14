@@ -1,12 +1,12 @@
 // only component
-import { useState, useEffect } from "react";
-import { AuthContext } from "./AuthContextInstance";
+import { useState } from "react";
+import { AuthContext } from "./AuthContextInstance.js"; // Import context instance
 
 export default function AuthProvider({ children }) {
-  const [token, setToken] = useState(localStorage.getItem("token") || null);
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   const login = (newToken) => {
-    localStorage.setItem("token", newToken); // store token
+    localStorage.setItem("token", newToken);
     setToken(newToken);
   };
 
@@ -15,17 +15,15 @@ export default function AuthProvider({ children }) {
     setToken(null);
   };
 
-  useEffect(() => {
-    const savedToken = localStorage.getItem("token");
-    if (savedToken) setToken(savedToken);
-  }, []);
-
   return (
     <AuthContext.Provider value={{ token, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
 }
+
+
+
 
 
 
