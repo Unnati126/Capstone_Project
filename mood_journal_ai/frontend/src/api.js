@@ -1,15 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
 
 // This file sets up the API client for the frontend application.
 const API = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+  baseURL: 'http://localhost:5000/api',
 });
 
 // Interceptor to add the Authorization header with the token from localStorage
-API.interceptors.request.use((req) => {
-    const token = localStorage.getItem("token");
-    if (token) { req.headers.Authorization = 'Bearer ${token}'; }
-    return req;
+API.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`; // prefix with Bearer
+  }
+  return config;
 });
 
 // Interceptor to handle errors globally

@@ -20,6 +20,9 @@ export default function Login() {
     try {
       const res = await API.post("/auth/login", form);
       const token = res.data.token;
+
+    localStorage.setItem("token", token); // Store token in localStorage
+
       login(token); 
       alert("Login successful!");
       navigate("/journal"); 
