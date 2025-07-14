@@ -50,3 +50,33 @@ textarea {
   float: right;
   margin-left: 10px;
 }
+
+.entries-section {
+  margin-top: 40px;
+  max-width: 700px;
+  margin-inline: auto;
+  text-align: left;
+  color: white;
+}
+
+.entry-card {
+  background-color: #1e1e1e;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #333;
+}
+
+.entry-card button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: none;
+  background: #3f51b5;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.entry-card button:last-child {
+  background: #d32f2f;
+}
