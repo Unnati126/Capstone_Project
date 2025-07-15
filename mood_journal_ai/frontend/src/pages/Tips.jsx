@@ -1,9 +1,20 @@
 import "./Tips.css";
 import { useNavigate } from "react-router-dom";
 
+import { useContext }  from "react";
+import { AuthContext } from "../context/AuthContextInstance";
+
 // Tips component that provides useful tips for mental well-being
 export default function Tips() {
-  const navigate = useNavigate();
+      const navigate = useNavigate();
+
+      const { logout } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logout();
+        navigate("/home");
+    };
+
   return (
     <div className="tips-page">
       <div className="tips-content">
@@ -18,6 +29,7 @@ export default function Tips() {
           <li>🎵 Listen to your favorite calming music</li>
         </ul>
       </div>
+
       <br />
       <div className="breathing-guide">
         <p>Follow this exercise to start...</p>
@@ -25,6 +37,7 @@ export default function Tips() {
         <p className="breath-text">Breathe In... Breathe Out...</p>
       </div>
       <br />
+
         <p className="sign-off">
             Remember: You’re doing better than you think.<br />
             Come back tomorrow and take another step toward a happier you!           
@@ -33,9 +46,15 @@ export default function Tips() {
         <button
           type="button"
           className="back-btn"
-          onClick={() => navigate("/dashboard")}
-        >
+          onClick={() => navigate("/dashboard")}>
           Back
+        </button>
+
+        <button
+          type="button"
+          className="logout-btn"
+          onClick={handleLogout}>
+          Logout
         </button>
 
     </div>

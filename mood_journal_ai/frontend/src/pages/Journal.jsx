@@ -184,8 +184,7 @@ export default function Journal() {
         <button
           type="button"
           className="next-btn"
-          onClick={() => navigate("/dashboard")}
-        >
+          onClick={() => navigate("/dashboard")}>
           Next
         </button>
       </form>
