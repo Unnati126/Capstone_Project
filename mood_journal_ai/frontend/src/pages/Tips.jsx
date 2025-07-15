@@ -1,19 +1,27 @@
 import "./Tips.css";
 import { useNavigate } from "react-router-dom";
-
-import { useContext }  from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContextInstance";
 
-// Tips component that provides useful tips for mental well-being
 export default function Tips() {
-      const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { logout } = useContext(AuthContext);
+  const [showPopup, setShowPopup] = useState(false);
 
-      const { logout } = useContext(AuthContext);
+  const handleLogout = () => {
+    logout();
+    setShowPopup(true);
+  };
 
-    const handleLogout = () => {
-        logout();
-        navigate("/home");
-    };
+  // Redirect to home page after logout
+  useEffect(() => {
+    if (showPopup) {
+      const timer = setTimeout(() => {
+        window.location.href = "http://localhost:5173/";
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [showPopup]);
 
   return (
     <div className="tips-page">
@@ -38,29 +46,29 @@ export default function Tips() {
       </div>
       <br />
 
-        <p className="sign-off">
-            Remember: You’re doing better than you think.<br />
-            Come back tomorrow and take another step toward a happier you!           
-        </p>
+      <p className="sign-off">
+        Remember: You’re doing better than you think.<br />
+        Come back tomorrow and take another step toward a happier you!
+      </p>
 
-        <button
-          type="button"
-          className="back-btn"
-          onClick={() => navigate("/dashboard")}>
-          Back
-        </button>
+      <button type="button" className="back-btn" onClick={() => navigate("/dashboard")}>
+        Back
+      </button>
 
-        <button
-          type="button"
-          className="logout-btn"
-          onClick={handleLogout}>
-          Logout
-        </button>
+      <button type="button" className="logout-btn" onClick={handleLogout}>
+        Logout
+      </button>
 
+      {showPopup && (
+        <div className="logout-popup">
+          <div className="popup-content">
+            <h3>Logged out successfully</h3>
+            <p>Visit again!</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-
-
- /*🩵*/
+/*🩵*/
