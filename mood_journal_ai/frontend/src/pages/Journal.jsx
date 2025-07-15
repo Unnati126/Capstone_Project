@@ -23,7 +23,7 @@ export default function Journal() {
   const fetchEntries = async () => {
   try {
     const res = await API.get('/moods');
-    setEntries(res.data); // store in state
+    setEntries(res.data); 
   } catch (err) {
     console.error("Failed to fetch entries:", err.response?.data || err.message);
   }
@@ -102,6 +102,8 @@ export default function Journal() {
 
   return (
     <div className="journal-page">
+     <div className="journal-wrapper">
+
       <form className="journal-container" onSubmit={handleSubmit}>
         <h2 className="journal-heading">
           {editingId ? "Update Mood Entry" : "Daily Mood Check-In"}
@@ -180,7 +182,6 @@ export default function Journal() {
           {editingId ? "Update Entry" : "Submit"}
         </button>
 
-
         <button
           type="button"
           className="next-btn"
@@ -190,7 +191,7 @@ export default function Journal() {
       </form>
 
       <div className="entries-section">
-        <h3>Your Previous Entries</h3>
+        <h2>Your Previous Entries</h2>
         {entries.length === 0 ? (
           <p>No mood entries yet.</p>
         ) : (
@@ -207,6 +208,7 @@ export default function Journal() {
             </div>
           ))
         )}
+      </div>
       </div>
 
       <Footer />
