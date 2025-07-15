@@ -1,6 +1,6 @@
 .journal-page {
   height: 100vh;
-  background: #ffffff url("../assets/journal-bgimage.jpeg") no-repeat center center/cover;
+  background: url("../assets/journal-bgimage.jpeg") no-repeat center center/cover;
   width: 100vw;
   display: flex;
   justify-content: center;
