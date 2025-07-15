@@ -19,18 +19,6 @@
   color: black;
 }
 
-/*.journal-container {
-  width: 600px;
-  background: #fff;
-  padding: 2rem;
-  margin: 2rem auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}*/
-
 .rating-question {
   margin-bottom: 20px;
 }
@@ -86,12 +74,12 @@ textarea {
   margin-right: 10px;
   padding: 5px 10px;
   border: none;
-  background: #3f51b5;
+  background: #48bb80;
   color: white;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .entry-card button:last-child {
-  background: #d32f2f;
+  background: #d13535;
 }
