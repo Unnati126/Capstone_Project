@@ -5,11 +5,13 @@ import { protect } from "../middleware/authMiddleware.js";
 // Create a new router instance
 const router = Router();
 
-// Define routes for mood entries
-router.get("/", protect, getAllMoods);
-router.post("/add", protect, addMood);
-router.put("/:id", protect, updateMood);
-router.delete("/:id", protect, deleteMood);
+// Apply protect middleware to all routes in this router
+router.use(protect);
 
-// Export the router to be used in the main app
+// Now routes are protected by default
+router.get("/", getAllMoods);
+router.post("/add", addMood);
+router.put("/:id", updateMood);
+router.delete("/:id", deleteMood);
+
 export default router;
