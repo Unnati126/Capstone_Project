@@ -1,8 +1,6 @@
 import Mood from "../models/Mood.js";
 
-// @desc    Add new mood entry
-// @route   POST /api/moods/add
-// @access  Private
+// Add a new mood entry
 const addMood = async (req, res) => {
   try {
     const { mood, stress, energy, motivation, sleep, note } = req.body;
@@ -25,9 +23,7 @@ const addMood = async (req, res) => {
   }
 };
 
-// @desc    Get all moods for the logged-in user
-// @route   GET /api/moods
-// @access  Private
+// Get all mood entries for the user
 const getAllMoods = async (req, res) => {
   try {
     const moods = await Mood.find({ user: req.user.id }).sort({ createdAt: -1 });
@@ -38,9 +34,7 @@ const getAllMoods = async (req, res) => {
   }
 };
 
-// @desc    Update a mood entry
-// @route   PUT /api/moods/:id
-// @access  Private
+// Update a mood entry
 const updateMood = async (req, res) => {
   try {
     const mood = await Mood.findById(req.params.id);
@@ -64,9 +58,7 @@ const updateMood = async (req, res) => {
   }
 };
 
-// @desc    Delete a mood entry
-// @route   DELETE /api/moods/:id
-// @access  Private
+// Delete a mood entry
 const deleteMood = async (req, res) => {
   try {
     const mood = await Mood.findById(req.params.id);
@@ -87,72 +79,5 @@ const deleteMood = async (req, res) => {
   }
 };
 
-// ✅ Export all controller functions
+//Export all controller functions
 export { addMood, getAllMoods, updateMood, deleteMood };
-
-
-
-/*import Mood from "../models/Mood.js";
-
-// ADD mood
-const addMood = async (req, res) => {
-  try {
-    const { mood, stress, energy, motivation, sleep, note } = req.body;
-
-    const newMood = new Mood({
-      user: req.user._id,
-      mood,
-      stress,
-      energy,
-      motivation,
-      sleep,
-      note,
-    });
-
-    const savedMood = await newMood.save();
-    res.status(201).json(savedMood);
-  } catch (err) {
-    res.status(500).json({ message: "Failed to add mood", error: err.message });
-  }
-};
-
-// GET all moods
-const getAllMoods = async (req, res) => {
-  try {
-    const moods = await Mood.find({ user: req.user._id }).sort({ createdAt: -1 });
-    res.status(200).json(moods);
-  } catch (err) {
-    res.status(500).json({ message: "Failed to fetch moods", error: err.message });
-  }
-};
-
-// Update Mood
-const updateMood = async (req, res) => {
-  try {
-    const mood = await Mood.findById(req.params.id);
-
-    if (!mood) {
-      return res.status(404).json({ message: "Mood not found" });
-    }
-
-// DELETE mood
-const deleteMood = async (req, res) => {
-  try {
-    const mood = await Mood.findById(req.params.id);
-
-    if (!mood) {
-      return res.status(404).json({ message: "Mood not found" });
-    }
-
-    if (mood.user.toString() !== req.user._id.toString()) {
-      return res.status(403).json({ message: "Not authorized" });
-    }
-
-    await mood.deleteOne();
-    res.status(200).json({ message: "Mood deleted successfully" });
-  } catch (err) {
-    res.status(500).json({ message: "Failed to delete mood", error: err.message });
-  }
-};
-
-export { addMood, getAllMoods, updateMood, deleteMood };*/
