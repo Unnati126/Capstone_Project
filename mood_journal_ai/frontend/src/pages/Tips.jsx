@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthContextInstance";
 
+// Tips component that provides useful tips and a logout option
 export default function Tips() {
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
