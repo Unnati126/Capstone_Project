@@ -203,8 +203,8 @@ export default function Journal() {
               <p>🔥 Motivation: {entry.motivation}</p>
               <p>🛌 Sleep: {entry.sleep}</p>
               <p>📝 {entry.note}</p>
-              <button onClick={() => handleEdit(entry)}>✏ Edit</button>
-              <button onClick={() => handleDelete(entry._id)}>🗑 Delete</button>
+              <button onClick={() => handleEdit(entry)}>✎</button>
+              <button onClick={() => handleDelete(entry._id)}>✗</button>
             </div>
           ))
         )}
