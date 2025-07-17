@@ -5,6 +5,7 @@ import MoodChart from "../components/MoodChart.jsx";
 import Footer from "../components/Footer.jsx";
 import "./Dashboard.css";
 
+// Dashboard component that displays mood statistics and a sentiment chart
 export default function Dashboard() {
   const navigate = useNavigate();
   const [moods, setMoods] = useState([]);
@@ -22,25 +23,55 @@ export default function Dashboard() {
     fetchMoods();
   }, []);
 
+  // Calculate mood statistics
+  const positiveDays = moods.filter(m => m.sentiment === "positive").length;
+  const neutralDays = moods.filter(m => m.sentiment === "neutral").length;
+  const negativeDays = moods.filter(m => m.sentiment === "negative").length;
+
+  // Weekly streak logic
+  const now = new Date();
+  const oneWeekAgo = new Date();
+  oneWeekAgo.setDate(now.getDate() - 7);
+  const weeklyStreak = moods.filter(
+    (m) => new Date(m.createdAt) >= oneWeekAgo
+  ).length;
+
   return (
-      <div className="dashboard-page">
+    <div className="dashboard-page">
       <div className="dashboard-content">
-      <div className="dashboard-box">
-        <h2>Your Mood Sentiment Chart</h2>
-        <div className="chart-container">
-          <MoodChart moods={moods} />
+
+        <div className="top-row">
+          <div className="dashboard-box">
+            <h3>📈 Mood Sentiment Chart</h3>
+            <div className="chart-container">
+              <MoodChart moods={moods} />
+            </div>
+          </div>
+
+          <div className="summary-box">
+            <h3>📚 Mood Summary</h3>
+            <p>Total Entries: {moods.length}</p>
+            <p>😊 Positive Days: {positiveDays}</p>
+            <p>😐 Neutral Days: {neutralDays}</p>
+            <p>😔 Negative Days: {negativeDays}</p>
+          </div>
         </div>
-      </div>
 
-      <div className="dashboard-buttons">
-        <button type="button" className="back-btn" onClick={() => navigate("/journal")}>
-          Back
-        </button>
+        <div className="streak-row">
+          <div className="streak-box">
+            <h3>🔥Weekly Streak</h3>
+            <p>You’ve checked in <strong>{weeklyStreak}</strong> time(s) this week!</p>
+          </div>
+        </div>
 
-        <button className="next-btn" onClick={() => navigate("/tips")}>
-          Next
-        </button>
-      </div>
+        <div className="dashboard-buttons">
+          <button className="back-btn" onClick={() => navigate("/journal")}>
+            Back
+          </button>
+          <button className="next-btn" onClick={() => navigate("/tips")}>
+            Next
+          </button>
+        </div>
       </div>
 
       <Footer />
