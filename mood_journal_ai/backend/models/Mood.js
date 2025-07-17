@@ -9,6 +9,7 @@ const moodSchema = new mongoose.Schema({
   motivation: { type: Number, required: true },
   sleep: { type: Number, required: true },
   note: { type: String },
+  sentiment: String,
 }, { timestamps: true });
 
 // Create a Mood model based on the schema

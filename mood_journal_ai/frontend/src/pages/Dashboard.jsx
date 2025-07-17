@@ -5,35 +5,43 @@ import MoodChart from "../components/MoodChart.jsx";
 import Footer from "../components/Footer.jsx";
 import "./Dashboard.css";
 
-// Dashboard component that displays the user's mood history
 export default function Dashboard() {
   const navigate = useNavigate();
   const [moods, setMoods] = useState([]);
 
   useEffect(() => {
-    API.get("/moods").then(res => setMoods(res.data));
+    const fetchMoods = async () => {
+      try {
+        const res = await API.get("/moods");
+        setMoods(res.data);
+      } catch (err) {
+        console.error("Error loading mood data", err);
+      }
+    };
+
+    fetchMoods();
   }, []);
 
   return (
-     <div className="dashboard-page">
-      <h2>Your Mood History</h2>
-      <MoodChart moods={moods} />
+      <div className="dashboard-page">
+      <div className="dashboard-content">
+      <div className="dashboard-box">
+        <h2>Your Mood Sentiment Chart</h2>
+        <div className="chart-container">
+          <MoodChart moods={moods} />
+        </div>
+      </div>
 
-       <button
-          type="button"
-          className="back-btn"
-          onClick={() => navigate("/journal")}
-        >
+      <div className="dashboard-buttons">
+        <button type="button" className="back-btn" onClick={() => navigate("/journal")}>
           Back
         </button>
 
-
-      <button
-        className="next-btn"
-        onClick={() => navigate("/tips")}
-      >
-        Next
-      </button>
+        <button className="next-btn" onClick={() => navigate("/tips")}>
+          Next
+        </button>
+      </div>
+      </div>
 
       <Footer />
     </div>

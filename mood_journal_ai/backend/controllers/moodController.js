@@ -1,9 +1,13 @@
 import Mood from "../models/Mood.js";
+import { analyzeMood } from "../utils/sentimentAnalysis.js";
 
 // Add a new mood entry
 const addMood = async (req, res) => {
   try {
     const { mood, stress, energy, motivation, sleep, note } = req.body;
+
+    // Analyze sentiment from the note
+    const sentiment = analyzeMood({ mood, stress, energy, motivation, sleep, note });
 
     const newMood = new Mood({
       user: req.user.id,
@@ -13,8 +17,9 @@ const addMood = async (req, res) => {
       motivation,
       sleep,
       note,
+      sentiment,
     });
-
+    
     const savedMood = await newMood.save();
     res.status(201).json(savedMood);
   } catch (err) {
@@ -38,7 +43,6 @@ const getAllMoods = async (req, res) => {
 const updateMood = async (req, res) => {
   try {
     const mood = await Mood.findById(req.params.id);
-
     if (!mood) {
       return res.status(404).json({ message: "Mood entry not found." });
     }
@@ -47,8 +51,23 @@ const updateMood = async (req, res) => {
       return res.status(403).json({ message: "Unauthorized action." });
     }
 
-    const updatedMood = await Mood.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
+    const updatedFields = req.body;
+
+    if (updatedFields.note || updatedFields.mood || updatedFields.stress) {
+      const old = await Mood.findById(req.params.id);
+      const combined = {
+        mood: updatedFields.mood ?? old.mood,
+        stress: updatedFields.stress ?? old.stress,
+        energy: updatedFields.energy ?? old.energy,
+        motivation: updatedFields.motivation ?? old.motivation,
+        sleep: updatedFields.sleep ?? old.sleep,
+        note: updatedFields.note ?? old.note
+      };
+      updatedFields.sentiment = analyzeMood(combined);
+    }
+
+    const updatedMood = await Mood.findByIdAndUpdate(req.params.id, updatedFields, {
+      new: true
     });
 
     res.status(200).json(updatedMood);
@@ -62,7 +81,6 @@ const updateMood = async (req, res) => {
 const deleteMood = async (req, res) => {
   try {
     const mood = await Mood.findById(req.params.id);
-
     if (!mood) {
       return res.status(404).json({ message: "Mood entry not found." });
     }
@@ -79,5 +97,4 @@ const deleteMood = async (req, res) => {
   }
 };
 
-//Export all controller functions
 export { addMood, getAllMoods, updateMood, deleteMood };
