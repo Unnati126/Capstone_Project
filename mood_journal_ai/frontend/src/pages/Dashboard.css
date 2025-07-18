@@ -1,7 +1,7 @@
 .dashboard-page {
   min-height: 100vh;
   width: 100vw;
-  background: url('../assets/3.jpeg') no-repeat center center/cover;
+  background: url('../assets/dashboard-bgimage.jpeg') no-repeat center center/cover;
   display: flex;
   flex-direction: column;
   align-items: center;

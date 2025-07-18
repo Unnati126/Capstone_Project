@@ -23,7 +23,7 @@ export default function AuthProvider({ children }) {
 }
 
 
-// combine componenet and context but createb error and have to do manual reload
+// combine componenet and context but created error and have to do manual reload
 /*import { createContext, useState, useEffect } from "react";
 
 export const AuthContext = createContext();

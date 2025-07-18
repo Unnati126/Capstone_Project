@@ -5,6 +5,7 @@ import Footer from "../components/Footer.jsx";
 import "./Journal.css";
 import axios from "axios"; 
 
+// Journal component that allows users to log their daily mood and reflections
 export default function Journal() {
   const navigate = useNavigate();
 
@@ -29,7 +30,6 @@ export default function Journal() {
   }
 };
 
-
   useEffect(() => {
     fetchEntries();
   }, []);
@@ -45,14 +45,14 @@ export default function Journal() {
 
     try {
       if (editingId) {
-        // UPDATE
+        // update existing entry
         await axios.put(`http://localhost:5000/api/moods/${editingId}`, entry, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Entry updated successfully!");
         setEditingId(null);
       } else {
-        // CREATE 
+        // create new entry 
         await axios.post("http://localhost:5000/api/moods/add", entry, {
           headers: { Authorization: `Bearer ${token}` },
         });

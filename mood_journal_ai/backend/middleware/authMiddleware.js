@@ -27,4 +27,5 @@ const protect = async (req, res, next) => {
   }
 };
 
+// Export the protect middleware for use in routes
 export { protect };

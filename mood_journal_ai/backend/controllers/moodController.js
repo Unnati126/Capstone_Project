@@ -97,4 +97,5 @@ const deleteMood = async (req, res) => {
   }
 };
 
+// Export the controller functions
 export { addMood, getAllMoods, updateMood, deleteMood };

@@ -71,5 +71,3 @@ export default function Tips() {
     </div>
   );
 }
-
-/*🩵*/

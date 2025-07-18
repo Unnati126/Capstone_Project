@@ -14,4 +14,5 @@ router.post("/add", addMood);
 router.put("/:id", updateMood);
 router.delete("/:id", deleteMood);
 
+// Export the router to be used in the main app
 export default router;

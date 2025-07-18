@@ -8,7 +8,6 @@ import Journal from "./pages/Journal.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Tips from "./pages/Tips.jsx";
 
-
 // the main application component that sets up the routing for the app
 function App() {
   return (
@@ -26,7 +25,6 @@ function App() {
     </BrowserRouter>
   );
 }
-
 
 // entry point for the React application 
 export default App;
