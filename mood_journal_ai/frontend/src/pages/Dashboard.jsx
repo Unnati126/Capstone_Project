@@ -36,6 +36,7 @@ export default function Dashboard() {
     (m) => new Date(m.createdAt) >= oneWeekAgo
   ).length;
 
+  // Streak message based on the number of entries
   const streakMessage = weeklyStreak >= 3 ? "You're on fire! Keep the streak alive!"
     : weeklyStreak >= 2 ? "Great consistency! Keep it up!"
     : weeklyStreak > 0 ? "Nice start! Try for more tomorrow!"
@@ -67,7 +68,7 @@ export default function Dashboard() {
             <h3>🔥Weekly Streak</h3>
             <p>You’ve checked in <strong>{weeklyStreak}</strong> time(s) this week!</p>
 
-<br/>
+          <br/>
           <div className="progress-bar">
             <div className="fill" style={{ width: `${(weeklyStreak / 4) * 100}%` }}></div>
             </div>
