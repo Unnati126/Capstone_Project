@@ -36,6 +36,11 @@ export default function Dashboard() {
     (m) => new Date(m.createdAt) >= oneWeekAgo
   ).length;
 
+  const streakMessage = weeklyStreak >= 3 ? "You're on fire! Keep the streak alive!"
+    : weeklyStreak >= 2 ? "Great consistency! Keep it up!"
+    : weeklyStreak > 0 ? "Nice start! Try for more tomorrow!"
+    : "Let's get started! Your journey awaits.";
+
   return (
     <div className="dashboard-page">
       <div className="dashboard-content">
@@ -61,8 +66,14 @@ export default function Dashboard() {
           <div className="streak-box">
             <h3>🔥Weekly Streak</h3>
             <p>You’ve checked in <strong>{weeklyStreak}</strong> time(s) this week!</p>
+
+<br/>
+          <div className="progress-bar">
+            <div className="fill" style={{ width: `${(weeklyStreak / 4) * 100}%` }}></div>
+            </div>
+              <p className="streak-msg">{streakMessage}</p>
+            </div>
           </div>
-        </div>
 
         <div className="dashboard-buttons">
           <button className="back-btn" onClick={() => navigate("/journal")}>

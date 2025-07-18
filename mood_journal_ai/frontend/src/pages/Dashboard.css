@@ -65,6 +65,28 @@
   box-sizing: border-box;
 }
 
+.streak-box .progress-bar {
+  width: 100%;
+  height: 12px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.streak-box .progress-bar .fill {
+  height: 100%;
+  background-color: #38c0f4;
+  transition: width 0.4s ease-in-out;
+}
+
+.streak-msg {
+  margin-top: 10px;
+  font-style: italic;
+  font-weight: bold;
+  color: #333;
+}
+
 .next-btn {
   position: fixed;
   bottom: 70px;
